@@ -20,41 +20,11 @@ namespace ConsoleApplication1
             }
         };
 
-        static int max = 10;
+        static int max = 1000;
         static int[,] tree = new int[max, 3];
         static int[] sets = new int[max];
         static List<edge> graph = new List<edge>();
-        static int N, M;                        //N - количество вершин M - количество ребер
-        static double len = 0, min;
 
-        static void add_edge()
-        {
-                   
-            N = int.Parse(Console.ReadLine());
-            M = int.Parse(Console.ReadLine());
-            Console.WriteLine("{0}  {1}", N, M);            
-            
-            
-            for (int i = 0; i < M; i++)
-            {
-                string[] line = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                graph.Add(new edge
-                {
-                    u = int.Parse(line[0]),
-                    v = int.Parse(line[1]),
-                    weight = int.Parse(line[2])
-                });
-            }                     
-
-            for (int i = 0; i < M; i++)
-            {
-                Console.WriteLine("u = {0} v = {1} w = {2}", graph[i].u, graph[i].v, graph[i].weight);
-                Console.WriteLine("\n");
-            }
-
-            for (int j = 1; j <= N; j++) 
-            { sets[j] = j; }
-        }
 
         static void swap(int k)
         {
@@ -71,7 +41,7 @@ namespace ConsoleApplication1
                     }
                 }
             }
-            min = graph[0].weight;
+
         }
 
         static int find(int vertex)
@@ -85,9 +55,10 @@ namespace ConsoleApplication1
             else sets[u] = v;
         }
 
-        static void BuildTree()
+        static double build(int N)
         {
             int i, t = 1;
+            double len = 0;
             swap(N);
             for(i = 1; i <= N; i++)
             {
@@ -103,13 +74,14 @@ namespace ConsoleApplication1
                     }
                 }
             }
+            return len;
         }
 
-        static void DisplayTree()
-        {
-            Console.WriteLine("Min weight: {0}", min);
-            Console.WriteLine("Cost: {0}", len);
-            Console.WriteLine("The Edges of the Minimum Spanning Tree are:");
+        static void get_tree(int N)
+        {            
+            Console.WriteLine("Cost: {0}", build(N));
+            Console.WriteLine("Min weight: {0}", graph[0].weight);
+            Console.WriteLine("Minimum tree:");
             for (int i = 1; i < N; i++)
                 Console.WriteLine(tree[i, 1] + " - " + tree[i, 2]);
             
@@ -117,9 +89,28 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)
         {
-            add_edge();
-            BuildTree();
-            DisplayTree();
+            int N, M;
+            Console.Write("Введите количество вершин: ");
+            N = int.Parse(Console.ReadLine());
+            Console.Write("Введите количество ребер: ");
+            M = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Введите список смежностей: ");
+            for (int i = 0; i < M; i++)
+            {
+                string[] line = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                graph.Add(new edge
+                {
+                    u = int.Parse(line[0]),
+                    v = int.Parse(line[1]),
+                    weight = int.Parse(line[2])
+                });
+            }
+
+
+            for (int j = 1; j <= N; j++)
+            { sets[j] = j; }
+            get_tree(N);
             Console.ReadKey();
         }
     }
