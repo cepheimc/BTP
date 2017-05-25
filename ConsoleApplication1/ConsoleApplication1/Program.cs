@@ -79,9 +79,9 @@ namespace ConsoleApplication1
 
         static void get_tree(int N)
         {            
-            Console.WriteLine("Cost: {0}", build(N));
-            Console.WriteLine("Min weight: {0}", graph[0].weight);
-            Console.WriteLine("Minimum tree:");
+            Console.WriteLine("\nCost: {0}", build(N));
+            Console.WriteLine("\nMin weight: {0}", graph[0].weight);
+            Console.WriteLine("\nMinimum tree:");
             for (int i = 1; i < N; i++)
                 Console.WriteLine(tree[i, 1] + " - " + tree[i, 2]);
             
@@ -89,29 +89,59 @@ namespace ConsoleApplication1
 
         static void Main(string[] args)
         {
-            int N, M;
-            Console.Write("Введите количество вершин: ");
-            N = int.Parse(Console.ReadLine());
-            Console.Write("Введите количество ребер: ");
-            M = int.Parse(Console.ReadLine());
+            int N, M, c;
+            Console.Write("Выберите способ ввода данных:\n 1.Произвольная генерация\n 2.Ввод пользователя\n");
+            c = int.Parse(Console.ReadLine());
+            switch (c) { 
+                case 1:
+                    Random random = new Random();                    
+                    N = random.Next(2,1000);
+                    Console.WriteLine("Количество вершин: {0}", N);
+                    M = random.Next(1, 15000);
+                    Console.WriteLine("Количество ребер: {0}", M);
 
-            Console.WriteLine("Введите список смежностей: ");
-            for (int i = 0; i < M; i++)
-            {
-                string[] line = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                graph.Add(new edge
-                {
-                    u = int.Parse(line[0]),
-                    v = int.Parse(line[1]),
-                    weight = int.Parse(line[2])
-                });
-            }
+                    for (int i = 0; i < M; i++)
+                    {
+                        graph.Add(new edge
+                        {
+                            u = random.Next(1, N),
+                            v = random.Next(1, N),
+                            weight = random.Next(1, 100)
+                        });
+                   }
 
 
-            for (int j = 1; j <= N; j++)
-            { sets[j] = j; }
-            get_tree(N);
-            Console.ReadKey();
+                    for (int j = 1; j <= N; j++)
+                    { sets[j] = j; }
+                    get_tree(N);
+                    Console.ReadKey();
+            break;
+                case 2:
+                    Console.Write("Введите количество вершин: ");
+                    N = int.Parse(Console.ReadLine());
+                    Console.Write("Введите количество ребер: ");
+                    M = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Введите список смежностей: ");
+                    for (int i = 0; i < M; i++)
+                    {
+                        string[] line = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                        graph.Add(new edge
+                        {
+                            u = int.Parse(line[0]),
+                            v = int.Parse(line[1]),
+                            weight = int.Parse(line[2])
+                        });
+                    }
+
+
+                    for (int j = 1; j <= N; j++)
+                    { sets[j] = j; }
+                    get_tree(N);
+                    Console.ReadKey();
+
+            break;
+        }
         }
     }
 }
