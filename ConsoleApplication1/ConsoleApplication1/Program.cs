@@ -58,7 +58,7 @@ namespace ConsoleApplication1
         static double build(int N)
         {
             int i, t = 1;
-            double len = 0;
+            double len = 0, count = 0;
             swap(N);
             for(i = 1; i <= N; i++)
             {
@@ -69,19 +69,20 @@ namespace ConsoleApplication1
                         tree[t, 1] = graph[i].u;
                         tree[t, 2] = graph[i].v;
                         len += graph[i].weight;
+                        count++;
                         join(graph[t].u, graph[t].v);
                         t++;
                     }
                 }
             }
-            return len;
+            return count;
         }
 
         static void get_tree(int N)
         {            
-            Console.WriteLine("\nCost: {0}", build(N));
-            Console.WriteLine("\nMin weight: {0}", graph[0].weight);
-            Console.WriteLine("\nMinimum tree:");
+            Console.WriteLine("\nКоличесвто кабелей: {0}", build(N));
+            Console.WriteLine("\nМинимальный вес: {0}", graph[0].weight);
+            Console.WriteLine("\nМинимальное дерево:");
             for (int i = 1; i < N; i++)
                 Console.WriteLine(tree[i, 1] + " - " + tree[i, 2]);
             
@@ -96,9 +97,9 @@ namespace ConsoleApplication1
                 case 1:
                     Random random = new Random();                    
                     N = random.Next(2,1000);
-                    Console.WriteLine("Количество вершин: {0}", N);
+                    Console.WriteLine("Количество хабов: {0}", N);
                     M = random.Next(1, 15000);
-                    Console.WriteLine("Количество ребер: {0}", M);
+                    Console.WriteLine("Количество соединений: {0}", M);
 
                     for (int i = 0; i < M; i++)
                     {
@@ -117,9 +118,9 @@ namespace ConsoleApplication1
                     Console.ReadKey();
             break;
                 case 2:
-                    Console.Write("Введите количество вершин: ");
+                    Console.Write("Введите количество хабов: ");
                     N = int.Parse(Console.ReadLine());
-                    Console.Write("Введите количество ребер: ");
+                    Console.Write("Введите количество соединений: ");
                     M = int.Parse(Console.ReadLine());
 
                     Console.WriteLine("Введите список смежностей: ");
