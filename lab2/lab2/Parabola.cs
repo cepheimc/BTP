@@ -40,5 +40,25 @@ namespace lab2
             }
             return obj.p == this.p && obj.x == this.x;
         }
+        public bool operator ==(Parabola obj1, Parabola obj2)
+        {
+            if (obj1 == null || obj2 == null)
+                return false;
+            return (obj1.x == obj2.x && obj1.p == obj2.p);
+        }
+        public bool operator !=(Parabola obj1, Parabola obj2)
+        {
+            if (obj1 == null || obj2 == null)
+                return false;
+            return !(obj1.x == obj2.x && obj1.p == obj2.p);
+        }
+        public override int GetHashCode()
+        {
+            return (int)x ^ (int)p;
+        }
+        public override string ToString()
+        {
+            return "x = " + x + " p = " + p + "\ny = " + y();
+        }
     }
 }

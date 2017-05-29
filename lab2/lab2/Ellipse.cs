@@ -41,5 +41,26 @@ namespace lab2
             }
             return obj.a == this.a && obj.b == this.b && obj.x == this.x;
         }
+
+        public bool operator ==(Ellipse obj1, Ellipse obj2)
+        {
+            if (obj1 == null || obj2 == null)
+                return false;
+            return (obj1.x == obj2.x && obj1.a == obj2.a && obj1.b == obj2.b);
+        }
+        public bool operator !=(Ellipse obj1, Ellipse obj2)
+        {
+            if (obj1 == null || obj2 == null)
+                return false;
+            return !(obj1.x == obj2.x && obj1.a == obj2.a && obj1.b == obj2.b);
+        }
+        public override int GetHashCode()
+        {
+            return (int)x ^ (int)a ^ (int)b;
+        }
+        public override string ToString()
+        {
+            return "x = "+x+" a = "+a+" b = "+b+"\ny = "+y();
+        }
     }
 }
