@@ -20,6 +20,26 @@ namespace lab2
             double f = System.Math.Sqrt(((System.Math.Pow(a, 2) - System.Math.Pow(x, 2)) * b * b) / System.Math.Pow(a, 2));
             return f;
         }
+        public Hiperbola operator +(Hiperbola obj1, Hiperbola obj2)
+        {
+            Hiperbola obj3 = new Hiperbola(obj1.x + obj2.x, obj1.a + obj2.a, obj1.b + obj2.b);
+            return obj3;
+        }
+        public Hiperbola operator -(Hiperbola obj1, Hiperbola obj2)
+        {
+            Hiperbola obj3 = new Hiperbola(obj1.x - obj2.x, obj1.a - obj2.a, obj1.b - obj2.b);
+            return obj3;
+        }
+        public Hiperbola operator *(Hiperbola obj1, Hiperbola obj2)
+        {
+            Hiperbola obj3 = new Hiperbola(obj1.x * obj2.x, obj1.a * obj2.a, obj1.b * obj2.b);
+            return obj3;
+        }
+        public Hiperbola operator /(Hiperbola obj1, Hiperbola obj2)
+        {
+            Hiperbola obj3 = new Hiperbola(obj1.x / obj2.x, obj1.a / obj2.a, obj1.b / obj2.b);
+            return obj3;
+        }
         public override bool Equals(object obj)
         {
             if (obj == null)

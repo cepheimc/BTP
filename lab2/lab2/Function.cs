@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace lab2
 {
-    abstract class Function
+    interface IFunction
     {
         protected double x;
-        public Function(double x)
+        public IFunction() { }
+        public IFunction(double x)
         {
             this.x = x;
         }

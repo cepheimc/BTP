@@ -9,6 +9,8 @@ namespace lab2
     class Parabola : Function
     {
         protected double p;
+        public Parabola()  {}
+
         public Parabola(double x, double p)
             : base(x)
         {
@@ -18,6 +20,26 @@ namespace lab2
         {
             double f = System.Math.Pow(x, 2) / (2 * p);
             return f;
+        }
+        public Parabola operator+(Parabola obj1, Parabola obj2)
+        {
+            Parabola obj3 = new Parabola(obj1.x + obj2.x, obj1.p + obj2.p);
+            return obj3;
+        }
+        public Parabola operator -(Parabola obj1, Parabola obj2)
+        {
+            Parabola obj3 = new Parabola(obj1.x - obj2.x, obj1.p - obj2.p);
+            return obj3;
+        }
+        public Parabola operator *(Parabola obj1, Parabola obj2)
+        {
+            Parabola obj3 = new Parabola(obj1.x * obj2.x, obj1.p * obj2.p);
+            return obj3;
+        }
+        public Parabola operator /(Parabola obj1, Parabola obj2)
+        {
+            Parabola obj3 = new Parabola(obj1.x / obj2.x, obj1.p / obj2.p);
+            return obj3;
         }
         public override bool Equals(object obj)
         {
