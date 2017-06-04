@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ellipse.cs" />
+    <Compile Include="NumbException.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="Hiperbola.cs" />
     <Compile Include="Parabola.cs" />

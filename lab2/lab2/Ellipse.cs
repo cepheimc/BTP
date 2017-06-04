@@ -12,8 +12,15 @@ namespace lab2
         public Ellipse(double x, double a, double b)
             : base(x)
         {
-            this.a = a;
-            this.b = b;
+            if (a == 0)
+            {
+                throw new NumbException("знаменатель = 0");
+            }
+            else
+            {
+                this.a = a;
+                this.b = b;
+            }
         }
         public override double y()
         {

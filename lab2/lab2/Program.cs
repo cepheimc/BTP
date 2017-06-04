@@ -30,14 +30,21 @@ namespace lab2
                         }
                     case 2:
                         {
+                            try
+                            {
                             Console.WriteLine("Введите данные");
                             Console.Write("x = ");
                             double x = double.Parse(Console.ReadLine());
-                            Console.Write("a = ");
-                            double a = double.Parse(Console.ReadLine());
+                            Console.Write("a = ");                            
+                            double a = double.Parse(Console.ReadLine());                            
                             Console.Write("b = ");
                             double b = double.Parse(Console.ReadLine());
                             obj1.Add(new Ellipse(x, a, b));
+                            }
+                            catch (NumbException ex)
+                            {
+                                Console.WriteLine("Ошибка: " + ex.mess);
+                            }
                             break;
                         }
                     case 3:
