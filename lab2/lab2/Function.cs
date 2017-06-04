@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab2
 {
-    interface IFunction
+    abstract class IFunction
     {
         protected double x;
         public IFunction() { }
@@ -14,7 +14,7 @@ namespace lab2
         {
             this.x = x;
         }
-        public double output { get; set; }
+     //   public double output { get; set; }
         public abstract double y();
     }
 }

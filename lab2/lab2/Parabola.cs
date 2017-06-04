@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab2
 {
-    class Parabola : Function
+    class Parabola : IFunction
     {
         protected double p;
         public Parabola()  {}
@@ -21,22 +21,22 @@ namespace lab2
             double f = System.Math.Pow(x, 2) / (2 * p);
             return f;
         }
-        public Parabola operator+(Parabola obj1, Parabola obj2)
+        public static Parabola operator+(Parabola obj1, Parabola obj2)
         {
             Parabola obj3 = new Parabola(obj1.x + obj2.x, obj1.p + obj2.p);
             return obj3;
         }
-        public Parabola operator -(Parabola obj1, Parabola obj2)
+        public static Parabola operator -(Parabola obj1, Parabola obj2)
         {
             Parabola obj3 = new Parabola(obj1.x - obj2.x, obj1.p - obj2.p);
             return obj3;
         }
-        public Parabola operator *(Parabola obj1, Parabola obj2)
+        public static Parabola operator *(Parabola obj1, Parabola obj2)
         {
             Parabola obj3 = new Parabola(obj1.x * obj2.x, obj1.p * obj2.p);
             return obj3;
         }
-        public Parabola operator /(Parabola obj1, Parabola obj2)
+        public static Parabola operator /(Parabola obj1, Parabola obj2)
         {
             Parabola obj3 = new Parabola(obj1.x / obj2.x, obj1.p / obj2.p);
             return obj3;
@@ -62,13 +62,13 @@ namespace lab2
             }
             return obj.p == this.p && obj.x == this.x;
         }
-        public bool operator ==(Parabola obj1, Parabola obj2)
+        public static bool operator ==(Parabola obj1, Parabola obj2)
         {
             if (obj1 == null || obj2 == null)
                 return false;
             return (obj1.x == obj2.x && obj1.p == obj2.p);
         }
-        public bool operator !=(Parabola obj1, Parabola obj2)
+        public static bool operator !=(Parabola obj1, Parabola obj2)
         {
             if (obj1 == null || obj2 == null)
                 return false;
@@ -80,7 +80,7 @@ namespace lab2
         }
         public override string ToString()
         {
-            return "x = " + x + " p = " + p + "\ny = " + y();
+            return "x = " + x + " p = " + p + "\ny = " + y() + "\n";
         }
     }
 }

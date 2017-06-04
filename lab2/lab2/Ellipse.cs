@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab2
 {
-    class Ellipse : Function
+    class Ellipse : IFunction
     {
         protected double a, b;
         public Ellipse(double x, double a, double b)
@@ -20,22 +20,22 @@ namespace lab2
             double f = System.Math.Sqrt((System.Math.Pow(x, 2) - (System.Math.Pow(a, 2)) * b * b) / System.Math.Pow(a, 2));
             return f;
         }
-        public Ellipse operator +(Ellipse obj1, Ellipse obj2)
+        public static Ellipse operator +(Ellipse obj1, Ellipse obj2)
         {
             Ellipse obj3 = new Ellipse(obj1.x + obj2.x, obj1.a + obj2.a, obj1.b + obj2.b);
             return obj3;
         }
-        public Ellipse operator -(Ellipse obj1, Ellipse obj2)
+        public static Ellipse operator -(Ellipse obj1, Ellipse obj2)
         {
             Ellipse obj3 = new Ellipse(obj1.x - obj2.x, obj1.a - obj2.a, obj1.b - obj2.b);
             return obj3;
         }
-        public Ellipse operator *(Ellipse obj1, Ellipse obj2)
+        public static Ellipse operator *(Ellipse obj1, Ellipse obj2)
         {
             Ellipse obj3 = new Ellipse(obj1.x * obj2.x, obj1.a * obj2.a, obj1.b * obj2.b);
             return obj3;
         }
-        public Ellipse operator /(Ellipse obj1, Ellipse obj2)
+        public static Ellipse operator /(Ellipse obj1, Ellipse obj2)
         {
             Ellipse obj3 = new Ellipse(obj1.x / obj2.x, obj1.a / obj2.a, obj1.b / obj2.b);
             return obj3;
@@ -62,13 +62,13 @@ namespace lab2
             return obj.a == this.a && obj.b == this.b && obj.x == this.x;
         }
 
-        public bool operator ==(Ellipse obj1, Ellipse obj2)
+        public static bool operator ==(Ellipse obj1, Ellipse obj2)
         {
             if (obj1 == null || obj2 == null)
                 return false;
             return (obj1.x == obj2.x && obj1.a == obj2.a && obj1.b == obj2.b);
         }
-        public bool operator !=(Ellipse obj1, Ellipse obj2)
+        public static bool operator !=(Ellipse obj1, Ellipse obj2)
         {
             if (obj1 == null || obj2 == null)
                 return false;
@@ -80,7 +80,7 @@ namespace lab2
         }
         public override string ToString()
         {
-            return "x = "+x+" a = "+a+" b = "+b+"\ny = "+y();
+            return "x = " + x + " a = " + a + " b = " + b + "\ny = " + y() + "\n";
         }
     }
 }
