@@ -20,7 +20,7 @@ namespace lab2
                     {
                         List<Ellipse> ell = new List<Ellipse>();
                         ell.Add(new Ellipse(1, 1, 1));
-                        ell.Add(new Ellipse(1, 2, 1));
+                        ell.Add(new Ellipse(2, 1, 1));
                         ell.Add(new Ellipse(3, 2, 1));
                         Series<Ellipse> obj1 = new Series<Ellipse>(ell);
                         do
@@ -31,7 +31,8 @@ namespace lab2
                             {
                                 case 1:
                                     {
-                                        obj1.Display();
+                                        obj1.Display();                                   
+                                        
                                         break;
                                     }
                                 case 2:
@@ -47,6 +48,10 @@ namespace lab2
                                             double b = double.Parse(Console.ReadLine());
                                             obj1.Add(new Ellipse(x, a, b));
                                         }
+                                        catch(FormatException)
+                                        {
+                                            Console.WriteLine("Ошибка: ввели не число");
+                                        }
                                         catch (NumbException ex)
                                         {
                                             Console.WriteLine("Ошибка: " + ex.mess);
@@ -55,7 +60,14 @@ namespace lab2
                                     }
                                 case 3:
                                     {
-                                        obj1.RemoveAt();
+                                        try
+                                        {
+                                            obj1.RemoveAt();
+                                        }
+                                        catch(IndexOutOfRangeException ex)
+                                        {
+                                            Console.WriteLine("Ошибка: " + ex.Message);
+                                        }
                                         break;
                                     }
                             }
@@ -95,6 +107,10 @@ namespace lab2
                                             double b = double.Parse(Console.ReadLine());
                                             obj2.Add(new Hiperbola(x, a, b));
                                         }
+                                        catch (FormatException)
+                                        {
+                                            Console.WriteLine("Ошибка: ввели не число");
+                                        }
                                         catch (NumbException ex)
                                         {
                                             Console.WriteLine("Ошибка: " + ex.mess);
@@ -103,7 +119,14 @@ namespace lab2
                                     }
                                 case 3:
                                     {
-                                        obj2.RemoveAt();
+                                        try
+                                        {
+                                            obj2.RemoveAt();
+                                        }
+                                        catch(IndexOutOfRangeException ex)
+                                        {
+                                            Console.WriteLine("Ошибка: " + ex.Message);
+                                        }
                                         break;
                                     }
                             }
@@ -141,6 +164,10 @@ namespace lab2
                                             double p = double.Parse(Console.ReadLine());
                                             obj3.Add(new Parabola(x, p));
                                         }
+                                        catch (FormatException)
+                                        {
+                                            Console.WriteLine("Ошибка: ввели не число");
+                                        }
                                         catch (NumbException ex)
                                         {
                                             Console.WriteLine("Ошибка: " + ex.mess);
@@ -149,7 +176,14 @@ namespace lab2
                                     }
                                 case 3:
                                     {
-                                        obj3.RemoveAt();
+                                        try
+                                        {
+                                            obj3.RemoveAt();
+                                        }
+                                        catch(IndexOutOfRangeException ex)
+                                        {
+                                            Console.WriteLine("Ошибка: " + ex.Message);
+                                        }
                                         break;
                                     }
                             }

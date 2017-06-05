@@ -45,8 +45,15 @@ namespace lab2
         }
         public static Parabola operator /(Parabola obj1, Parabola obj2)
         {
-            Parabola obj3 = new Parabola(obj1.x / obj2.x, obj1.p / obj2.p);
-            return obj3;
+            if (obj2.x == 0 || obj2.p == 0)
+            {
+                throw new NumbException("знаменатель = 0");
+            }
+            else
+            {
+                Parabola obj3 = new Parabola(obj1.x / obj2.x, obj1.p / obj2.p);
+                return obj3;
+            }
         }
         public override bool Equals(object obj)
         {
@@ -64,6 +71,10 @@ namespace lab2
         public bool Equals(Parabola obj)
         {
             if (obj == null)
+            {
+                return false;
+            }
+            if (Double.IsNaN(obj.y()))
             {
                 return false;
             }
@@ -87,7 +98,7 @@ namespace lab2
         }
         public override string ToString()
         {
-            return "x = " + x + " p = " + p + "\ny = " + y() + "\n";
+            return "x = " + x + " p = " + p + "\n     y = " + y() + "\n";
         }
     }
 }

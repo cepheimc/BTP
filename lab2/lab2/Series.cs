@@ -8,6 +8,7 @@ namespace lab2
 {
     class Series<T>
     {
+        
         public List<T> obj {get; set;}
 
         public Series() { }
@@ -26,8 +27,16 @@ namespace lab2
                 Console.WriteLine("№ "+i+"    "+obj[i]);
             Console.Write("Введите номер объекта: ");
             int x = int.Parse(Console.ReadLine());
-            obj.RemoveAt(x);
-            Console.WriteLine("Объект успешно удален");
+           if(x < 0 || x >= obj.Count)
+            {
+                throw new IndexOutOfRangeException("номер выходит за рамки списка");
+            }
+            else 
+            {            
+                obj.RemoveAt(x);
+                Console.WriteLine("Объект успешно удален");            
+           }
+
         }
         public void Display()
         {

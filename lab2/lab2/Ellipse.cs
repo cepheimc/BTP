@@ -24,8 +24,8 @@ namespace lab2
         }
         public double y()
         {
-            double f = System.Math.Sqrt((System.Math.Pow(x, 2) - (System.Math.Pow(a, 2)) * b * b) / System.Math.Pow(a, 2));
-            return f;
+                double f = System.Math.Sqrt((System.Math.Pow(x, 2) - (System.Math.Pow(a, 2)) * b * b) / System.Math.Pow(a, 2));
+                return f;
         }
         public static Ellipse operator +(Ellipse obj1, Ellipse obj2)
         {
@@ -44,8 +44,15 @@ namespace lab2
         }
         public static Ellipse operator /(Ellipse obj1, Ellipse obj2)
         {
-            Ellipse obj3 = new Ellipse(obj1.x / obj2.x, obj1.a / obj2.a, obj1.b / obj2.b);
-            return obj3;
+            if (obj2.x == 0 || obj2.a == 0 || obj2.b == 0)
+            {
+                throw new NumbException("знаменатель = 0");
+            }
+            else
+            {
+                Ellipse obj3 = new Ellipse(obj1.x / obj2.x, obj1.a / obj2.a, obj1.b / obj2.b);
+                return obj3;
+            }
         }
         public override bool Equals(object obj)
         {
@@ -63,6 +70,10 @@ namespace lab2
         public bool Equals(Ellipse obj)
         {
             if (obj == null)
+            {
+                return false;
+            }
+            if(Double.IsNaN(obj.y()))
             {
                 return false;
             }
@@ -87,7 +98,7 @@ namespace lab2
         }
         public override string ToString()
         {
-            return "x = " + x + " a = " + a + " b = " + b + "\ny = " + y() + "\n";
+            return "x = " + x + " a = " + a + " b = " + b + "\n     y = " + y() + "\n";
         }
     }
 }
