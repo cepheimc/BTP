@@ -8,14 +8,21 @@ namespace lab2
 {
     class Hiperbola : IFunction
     {
-        protected double a, b;
+        protected double a, b, x;
         public Hiperbola(double x, double a, double b)
-            : base(x)
         {
-            this.a = a;
-            this.b = b;
+            if (a == 0)
+            {
+                throw new NumbException("знаменатель = 0");
+            }
+            else
+            {
+                this.x = x;
+                this.a = a;
+                this.b = b;
+            }
         }
-        public override double y()
+        public double y()
         {
             double f = System.Math.Sqrt(((System.Math.Pow(a, 2) - System.Math.Pow(x, 2)) * b * b) / System.Math.Pow(a, 2));
             return f;

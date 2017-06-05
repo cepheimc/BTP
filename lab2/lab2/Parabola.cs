@@ -8,15 +8,22 @@ namespace lab2
 {
     class Parabola : IFunction
     {
-        protected double p;
+        protected double p, x;
         public Parabola()  {}
 
         public Parabola(double x, double p)
-            : base(x)
         {
-            this.p = p;
+            if (p == 0)
+            {
+                throw new NumbException("знаменатель = 0");
+            }
+            else
+            {
+                this.x = x;
+                this.p = p;
+            }
         }
-        public override double y()
+        public double y()
         {
             double f = System.Math.Pow(x, 2) / (2 * p);
             return f;

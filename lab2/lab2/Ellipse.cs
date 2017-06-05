@@ -8,9 +8,8 @@ namespace lab2
 {
     class Ellipse : IFunction
     {
-        protected double a, b;
+        protected double a, b, x;
         public Ellipse(double x, double a, double b)
-            : base(x)
         {
             if (a == 0)
             {
@@ -18,11 +17,12 @@ namespace lab2
             }
             else
             {
+                this.x = x;
                 this.a = a;
                 this.b = b;
             }
         }
-        public override double y()
+        public double y()
         {
             double f = System.Math.Sqrt((System.Math.Pow(x, 2) - (System.Math.Pow(a, 2)) * b * b) / System.Math.Pow(a, 2));
             return f;
