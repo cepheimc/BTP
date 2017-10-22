@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="lab1.Vegetables" Collapsed="true">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Meat" Collapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Salt" Collapsed="true">
+    <Position X="3" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Porridge" Collapsed="true">
+    <Position X="4.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Soup" Collapsed="true">
+    <Position X="1.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAIAAEAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.SecondDish" Collapsed="true">
+    <Position X="4.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAEAAAAAAAAAAIQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.MenuBuilder" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAQAEAAAAAAAAAAAAACAABCI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Chef" Collapsed="true">
+    <Position X="1.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Borsch" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Veget" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.SaltWort" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Puree" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.BuckWheat" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Egg" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Dessert" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAABAI=</HashCode>
+      <FileName>ClassMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="lab1.Program" Collapsed="true">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
