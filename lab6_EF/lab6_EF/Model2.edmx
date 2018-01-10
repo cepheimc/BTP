@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model2.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model2StoreContainer">
+    <EntitySet Name="Routes" EntityType="Model2.Store.Routes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stations" EntityType="Model2.Store.Stations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Buss" EntityType="Model2.Store.Buss" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Links" EntityType="Model2.Store.Links" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LinkStation" EntityType="Model2.Store.LinkStation" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RouteBus" Association="Model2.Store.RouteBus">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="Bus" EntitySet="Buss" />
+    </AssociationSet>
+    <AssociationSet Name="RouteLink" Association="Model2.Store.RouteLink">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="Link" EntitySet="Links" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkStation_Link" Association="Model2.Store.FK_LinkStation_Link">
+      <End Role="Link" EntitySet="Links" />
+      <End Role="LinkStation" EntitySet="LinkStation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkStation_Station" Association="Model2.Store.FK_LinkStation_Station">
+      <End Role="Station" EntitySet="Stations" />
+      <End Role="LinkStation" EntitySet="LinkStation" />
+    </AssociationSet>
+    <AssociationSet Name="StationLink" Association="Model2.Store.StationLink">
+      <End Role="Station" EntitySet="Stations" />
+      <End Role="Link" EntitySet="Links" />
+    </AssociationSet>
+    <AssociationSet Name="StationLink1" Association="Model2.Store.StationLink1">
+      <End Role="Station" EntitySet="Stations" />
+      <End Role="Link" EntitySet="Links" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Routes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="count" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Buss">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RouteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Links">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="time" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RouteId" Type="int" Nullable="false" />
+    <Property Name="StationId" Type="int" Nullable="false" />
+    <Property Name="StationId1" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LinkStation">
+    <Key>
+      <PropertyRef Name="Linkss_Id" />
+      <PropertyRef Name="Stationss_Id" />
+    </Key>
+    <Property Name="Linkss_Id" Type="int" Nullable="false" />
+    <Property Name="Stationss_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="RouteBus">
+    <End Role="Route" Type="Model2.Store.Routes" Multiplicity="1" />
+    <End Role="Bus" Type="Model2.Store.Buss" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bus">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RouteLink">
+    <End Role="Route" Type="Model2.Store.Routes" Multiplicity="1" />
+    <End Role="Link" Type="Model2.Store.Links" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Link">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StationLink">
+    <End Role="Station" Type="Model2.Store.Stations" Multiplicity="1" />
+    <End Role="Link" Type="Model2.Store.Links" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Link">
+        <PropertyRef Name="StationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StationLink1">
+    <End Role="Station" Type="Model2.Store.Stations" Multiplicity="1" />
+    <End Role="Link" Type="Model2.Store.Links" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Station">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Link">
+        <PropertyRef Name="StationId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkStation_Link">
+    <End Role="Link" Type="Model2.Store.Links" Multiplicity="1" />
+    <End Role="LinkStation" Type="Model2.Store.LinkStation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Link">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkStation">
+        <PropertyRef Name="Linkss_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkStation_Station">
+    <End Role="LinkStation" Type="Model2.Store.LinkStation" Multiplicity="*" />
+    <End Role="Station" Type="Model2.Store.Stations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Station">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkStation">
+        <PropertyRef Name="Stationss_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model2" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="RouteContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Routes" EntityType="Model2.Route" />
+          <EntitySet Name="Stations" EntityType="Model2.Station" />
+          <EntitySet Name="Buss" EntityType="Model2.Bus" />
+          <AssociationSet Name="RouteBus" Association="Model2.RouteBus">
+            <End Role="Route" EntitySet="Routes" />
+            <End Role="Bus" EntitySet="Buss" />
+          </AssociationSet>
+          <EntitySet Name="Links" EntityType="Model2.Link" />
+          <AssociationSet Name="RouteLink" Association="Model2.RouteLink">
+            <End Role="Route" EntitySet="Routes" />
+            <End Role="Link" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="LinkStation" Association="Model2.LinkStation">
+            <End Role="Link" EntitySet="Links" />
+            <End Role="Station" EntitySet="Stations" />
+          </AssociationSet>
+          <AssociationSet Name="StationLink" Association="Model2.StationLink">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="Link" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="StationLink1" Association="Model2.StationLink1">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="Link" EntitySet="Links" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="count" Type="String" Nullable="false" />
+          <NavigationProperty Name="Bus" Relationship="Model2.RouteBus" FromRole="Route" ToRole="Bus" />
+          <NavigationProperty Name="Link" Relationship="Model2.RouteLink" FromRole="Route" ToRole="Link" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Linkss" Relationship="Model2.LinkStation" FromRole="Station" ToRole="Link" />
+          <NavigationProperty Name="Link" Relationship="Model2.StationLink" FromRole="Station" ToRole="Link" />
+          <NavigationProperty Name="Link1" Relationship="Model2.StationLink1" FromRole="Station" ToRole="Link" />
+        </EntityType>
+        <EntityType Name="Bus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="String" Nullable="false" />
+          <NavigationProperty Name="Route" Relationship="Model2.RouteBus" FromRole="Bus" ToRole="Route" />
+          <Property Name="RouteId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RouteBus">
+          <End Type="Model2.Route" Role="Route" Multiplicity="1" />
+          <End Type="Model2.Bus" Role="Bus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bus">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="time" Type="String" Nullable="false" />
+          <NavigationProperty Name="Route" Relationship="Model2.RouteLink" FromRole="Link" ToRole="Route" />
+          <Property Name="RouteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Stationss" Relationship="Model2.LinkStation" FromRole="Link" ToRole="Station" />
+          <NavigationProperty Name="Station" Relationship="Model2.StationLink" FromRole="Link" ToRole="Station" />
+          <Property Name="StationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Station1" Relationship="Model2.StationLink1" FromRole="Link" ToRole="Station" />
+          <Property Name="StationId1" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RouteLink">
+          <End Type="Model2.Route" Role="Route" Multiplicity="1" />
+          <End Type="Model2.Link" Role="Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LinkStation">
+          <End Type="Model2.Link" Role="Link" Multiplicity="*" />
+          <End Type="Model2.Station" Role="Station" Multiplicity="*" />
+        </Association>
+        <Association Name="StationLink">
+          <End Type="Model2.Station" Role="Station" Multiplicity="1" />
+          <End Type="Model2.Link" Role="Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StationLink1">
+          <End Type="Model2.Station" Role="Station" Multiplicity="1" />
+          <End Type="Model2.Link" Role="Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="StationId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model2StoreContainer" CdmEntityContainer="RouteContainer">
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model2.Route)">
+        <MappingFragment StoreEntitySet="Routes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stations">
+      <EntityTypeMapping TypeName="IsTypeOf(Model2.Station)">
+        <MappingFragment StoreEntitySet="Stations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buss">
+      <EntityTypeMapping TypeName="IsTypeOf(Model2.Bus)">
+        <MappingFragment StoreEntitySet="Buss">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Links">
+      <EntityTypeMapping TypeName="IsTypeOf(Model2.Link)">
+        <MappingFragment StoreEntitySet="Links">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="StationId" ColumnName="StationId" />
+          <ScalarProperty Name="StationId1" ColumnName="StationId1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LinkStation" TypeName="Model2.LinkStation" StoreEntitySet="LinkStation">
+      <EndProperty Name="Link">
+        <ScalarProperty Name="Id" ColumnName="Linkss_Id" />
+      </EndProperty>
+      <EndProperty Name="Station">
+        <ScalarProperty Name="Id" ColumnName="Stationss_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
